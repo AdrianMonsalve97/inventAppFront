@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Botones del Navbar con borde animado */
+    .nav-button {
+      @apply relative px-4 py-2 font-semibold transition-all duration-300 rounded-md flex items-center overflow-hidden;
+    }
+  
+    .nav-button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+  
+    .nav-button:hover::after {
+      border-color: #00e0ff;
+      transform: scale(1.1);
+    }
+  
+    /* Dropdown items con la misma animación */
+    .dropdown-item {
+      @apply block px-4 py-2 transition-all duration-200 rounded-md relative;
+    }
+  
+    .dropdown-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 0.5rem;
+      transition: border-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+  
+    .dropdown-item:hover::after {
+      border-color: #00e0ff;
+      transform: scale(1.05);
+    }
+  }
+  
