@@ -19,7 +19,7 @@ const CategoriaForm = ({
       const nuevaCategoria = await crearCategoria({ nombre });
       onCategoriaAgregada(nuevaCategoria);
       setNombre("");
-      setIsOpen(false); // Cerrar formulario después de crear categoría
+      setIsOpen(false); 
     } catch (error) {
       console.error("Error al crear la categoría", error);
     }

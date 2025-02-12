@@ -14,7 +14,6 @@ const TablaEmpresas = () => {
 
   const empresasPorPagina = 5;
 
-  // Función para cargar empresas con useCallback
   const cargarEmpresas = useCallback(async () => {
     setLoading(true);
     try {
@@ -32,15 +31,12 @@ const TablaEmpresas = () => {
     if (empresas.length === 0) cargarEmpresas();
   }, [cargarEmpresas, empresas.length]);
 
-  // Filtrar empresas por búsqueda
   const empresasFiltradas = empresas.filter((empresa) =>
     empresa.nombre.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Calcular empresas en la página actual
   const empresasPaginadas = empresasFiltradas.slice((pagina - 1) * empresasPorPagina, pagina * empresasPorPagina);
 
-  // Eliminar empresa con confirmación
   const handleEliminar = async () => {
     if (!empresaSeleccionada) return;
 
@@ -69,7 +65,6 @@ const TablaEmpresas = () => {
     <div className="p-5 w-full bg-white/50 shadow-md rounded-lg border border-gray-200">
       <h2 className="m-5 text-2xl font-bold text-gray-700 text-center">🏢 Lista de Empresas</h2>
 
-      {/* Input de búsqueda */}
       <input
         type="text"
         placeholder="Buscar empresa..."
@@ -77,7 +72,6 @@ const TablaEmpresas = () => {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* Tabla */}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border rounded-lg border-gray-300 shadow-md">
           <thead className="bg-blue-900 text-white">
@@ -132,7 +126,6 @@ const TablaEmpresas = () => {
         </table>
       </div>
 
-      {/* Paginación */}
       <div className="flex justify-center mt-4">
         {Array.from({ length: Math.ceil(empresasFiltradas.length / empresasPorPagina) }, (_, i) => (
           <button

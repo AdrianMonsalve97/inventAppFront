@@ -2,7 +2,7 @@ import { useState } from "react";
 import ProductoForm from "../../components/productos/ProductoForm";
 import ProductoList from "../../components/productos/ProductoList";
 import { Producto } from "../../core/Producto";
-import "../../components/productos/Producto.css"; // Importa correctamente el CSS
+import "../../components/productos/Producto.css"; 
 
 export const Products = () => {
   const [productos, setProductos] = useState<Producto[]>([]);
@@ -14,7 +14,6 @@ export const Products = () => {
 
   return (
     <div className="relative flex items-center justify-center h-screen w-screen overflow-hidden transition-all duration-500 bg-transparent">
-      {/* Elementos flotantes de fondo */}
       <div className="absolute inset-0 overflow-hidden">
         {Array.from({ length: 20 }).map((_, i) => (
           <div

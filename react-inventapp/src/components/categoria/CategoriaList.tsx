@@ -7,7 +7,7 @@ const CategoriaList = ({ reload }: { reload: boolean }) => {
 
   useEffect(() => {
     cargarCategorias();
-  }, [reload]); // Se ejecuta cuando cambia `reload`
+  }, [reload]); 
 
   const cargarCategorias = async () => {
     try {

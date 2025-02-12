@@ -17,9 +17,9 @@ export const useAuth = () => {
 
             if (!response.ok) throw new Error("Credenciales incorrectas");
 
-            const data = await response.json(); // 👈 Suponiendo que la API devuelve { token, id }
-            localStorage.setItem("token", data.token); // Guarda el token
-            localStorage.setItem("userId", data.id); // Guarda el ID del usuario
+            const data = await response.json();
+            localStorage.setItem("token", data.token); 
+            localStorage.setItem("userId", data.id); 
 
         } catch (err: unknown) {
             if (err instanceof Error) {

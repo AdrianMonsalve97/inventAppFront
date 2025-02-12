@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import { Layout } from "../components/Layout"; // Importamos el Layout
+import { Layout } from "../components/Layout"; 
 import CategoriaPage from "../presentations/pages/CategoriaPage";
 import ClientePage from "../presentations/pages/ClientePage";
 

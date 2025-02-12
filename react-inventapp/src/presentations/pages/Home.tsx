@@ -29,23 +29,23 @@ export const Home = () => {
       className: "w-14 h-14 border-2 border-white opacity-20 rounded-full",
       x: -20,
       y: 20,
-    }, // Círculo pequeño
+    },
     {
       className: "w-18 h-18 bg-white opacity-50 rotate-45 rounded-lg",
       x: 60,
       y: -60,
-    }, // Rombo pequeño
-    { className: "w-36 h-36 bg-white opacity-45 rounded-full", x: 40, y: -40 }, // Círculo grande
+    }, 
+    { className: "w-36 h-36 bg-white opacity-45 rounded-full", x: 40, y: -40 }, 
     {
       className: "w-28 h-28 border-2 border-white opacity-30 rounded-md",
       x: -60,
       y: 60,
-    }, // Cuadrado con bordes
+    }, 
     {
       className: "w-20 h-20 bg-white opacity-50 rotate-30 clip-hexagon",
       x: 30,
       y: -30,
-    }, // Hexágono
+    }, 
   ];
 
   return (
@@ -71,7 +71,6 @@ export const Home = () => {
         />
       ))}
 
-      {/* Contenido */}
       <div className="relative z-10 text-center text-white p-10">
         <h1 className="text-6xl font-extrabold mb-4 text-blue-950 drop-shadow-lg">
           Bienvenido a InventApp
@@ -79,8 +78,6 @@ export const Home = () => {
         <p className="text-lg text-black font-semibold opacity-90">
           Administra tu inventario y productos con facilidad.
         </p>
-
-        {/* Botón Animado */}
         <motion.button
           className="relative mt-6 px-8 py-3 font-bold text-white uppercase rounded-lg shadow-lg overflow-hidden
                bg-gradient-to-r from-black via-blue-950 to-blue-700
@@ -95,11 +92,8 @@ export const Home = () => {
         >
           <span className="relative z-10">Iniciar Sesión</span>
 
-          {/* Efecto de brillo animado */}
           <span className="absolute inset-0 bg-white opacity-10 blur-md"></span>
           <span className="absolute inset-0 bg-white opacity-5 blur-xl"></span>
-
-          {/* Borde animado */}
           <span className="absolute -inset-1 border-2 border-blue-300 opacity-30 rounded-lg animate-pulse"></span>
         </motion.button>
       </div>

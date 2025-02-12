@@ -5,7 +5,7 @@ import CategoriaForm from "../../components/categoria/CategoriaForm";
 
 export const CategoriaPage = () => {
   const [reload, setReload] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Estado para mostrar el modal
+  const [isOpen, setIsOpen] = useState(false); 
 
   return (
     <div className="relative flex items-center justify-center h-screen w-screen overflow-hidden transition-all duration-500 bg-transparent">
@@ -55,7 +55,7 @@ export const CategoriaPage = () => {
               <CategoriaForm
                 onCategoriaAgregada={() => {
                   setIsOpen(false);
-                  setReload(!reload); // Recargar la lista después de agregar
+                  setReload(!reload);
                 }}
                 setIsOpen={setIsOpen}
               />

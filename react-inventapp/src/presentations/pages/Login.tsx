@@ -1,11 +1,11 @@
 import { useState, useEffect, FormEvent } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { Mail, Lock, ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom"; // Para manejar la navegación
-import "../../components/login/login.css"; // Asegúrate de importar los estilos CSS
+import { useNavigate } from "react-router-dom"; 
+import "../../components/login/login.css"; 
 
 export const Login = () => {
-    const navigate = useNavigate(); // Hook para redireccionar
+    const navigate = useNavigate(); 
     const { loading } = useAuth();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -26,10 +26,8 @@ export const Login = () => {
 
     function handleLogin(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
-        
-        // Simulación de login exitoso
-        setTimeout(() => {
-            navigate("/productos"); // Redirige a la página de productos
+                setTimeout(() => {
+            navigate("/productos");
         }, 1000);
     }
 
