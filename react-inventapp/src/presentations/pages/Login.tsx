@@ -6,7 +6,7 @@ import "../../components/login/login.css";
 
 export const Login = () => {
     const navigate = useNavigate(); 
-    const { loading } = useAuth();
+    const { loading, authenticate, error } = useAuth(); 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
@@ -24,16 +24,26 @@ export const Login = () => {
     }, []);
     
 
-    function handleLogin(event: FormEvent<HTMLFormElement>): void {
+    const handleLogin = async (event: FormEvent<HTMLFormElement>) => { 
         event.preventDefault();
-                setTimeout(() => {
-            navigate("/productos");
-        }, 1000);
-    }
+
+        try {
+            const data = await authenticate(username, password);
+
+            if (data && data.token && data.id && data.rol) {
+                navigate("/productos"); 
+            } else {
+                console.error("Datos incompletos del backend:", data);
+                
+            }
+        } catch (err) {
+            console.error("Error en el login:", err);
+           
+        }
+    };
 
     return (
         <div className={`relative flex items-center justify-center h-screen w-full overflow-hidden transition-all duration-500 ${isDarkMode ? "bg-black" : "bg-white"}`}>
-            
             <div className="absolute inset-0 overflow-hidden">
                 {Array.from({ length: 20 }).map((_, i) => (
                     <div
@@ -50,7 +60,6 @@ export const Login = () => {
             </div>
 
             <div className={`relative backdrop-blur-xl p-8 rounded-lg shadow-lg w-[30%] border ${isDarkMode ? "bg-white/10 border-blue-500/50" : "bg-white/90 border-gray-300"}`}>
-                
                 <button
                     onClick={() => navigate("/")}
                     className="absolute top-3 left-3 flex items-center gap-2 text-blue-500 hover:text-blue-700 transition-all"
@@ -62,13 +71,12 @@ export const Login = () => {
                 <div className="mb-4 flex justify-center">
                     <img 
                         src="/src/assets/image/Login.png" 
-                        alt="Login Illustration"  
+                        alt="Login Illustration"  
                         className="animate-fadeIn animate-scaleIn"
                     />
                 </div>
 
                 <form onSubmit={handleLogin} className="text-left">
-                    
                     <div className="relative mb-6">
                         <Mail className={`absolute left-3 top-3 ${isDarkMode ? "text-blue-400" : "text-gray-500"}`} size={20} />
                         <input 
@@ -98,6 +106,7 @@ export const Login = () => {
                     >
                         {loading ? "Cargando..." : "INICIAR SESIÓN"}
                     </button>
+                    {error && <p className="text-red-500 mt-2">{error}</p>} {/* Muestra el error */}
                 </form>
             </div>
         </div>

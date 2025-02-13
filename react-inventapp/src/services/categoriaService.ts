@@ -1,16 +1,16 @@
-import axios from "axios";
+import api from '../config/api';
 import { Categoria } from "../core/Categoria";
 
-const API_URL = "http://localhost:8080/api/categorias";
+const API_URL = "api/categorias";
 
 export const listarCategorias = async (): Promise<Categoria[]> =>
-  (await axios.get(`${API_URL}`)).data;
+    (await api.get(API_URL+"/listarcategorias")).data; 
 
 export const crearCategoria = async (categoria: Categoria): Promise<Categoria> =>
-  (await axios.post(`${API_URL}/crear`, categoria)).data;
+    (await api.post(`${API_URL}/crear`, categoria)).data; 
 
 export const actualizarCategoria = async (categoria: Categoria): Promise<Categoria> =>
-  (await axios.put(`${API_URL}`, categoria)).data;
+    (await api.put(API_URL, categoria)).data;
 
 export const eliminarCategoria = async (id: string) =>
-  await axios.delete(`${API_URL}/${id}`);
+    await api.delete(`${API_URL}/${id}`); 

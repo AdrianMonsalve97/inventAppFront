@@ -29,7 +29,7 @@ const CategoriaList = ({ reload }: { reload: boolean }) => {
           >
             <span>{categoria.nombre}</span>
             <button
-              onClick={() => console.log("Eliminar", categoria.id)}
+              onClick={() => (categoria.id)}
               className="bg-red-500 text-white px-3 py-1 rounded-md"
             >
               Eliminar

@@ -1,34 +1,55 @@
-import axios from "axios";
+import api from '../config/api';
 import { Cliente } from "../core/Cliente";
 
-const API_URL = "http://localhost:8080/clientes";
-
-export const crearCliente = async (cliente: {
-  id: string;
-  nombre: string;
-  direccion: string;
-  telefono: string;
-}) => {
-  try {
-    const response = await axios.post(API_URL, cliente, {
-      headers: { "Content-Type": "application/json" },
-    });
-    return response.data;
-  } catch (error) {
-    console.error("Error al crear el cliente", error);
-    throw error;
-  }
-};
-export const obtenerClientes = async (): Promise<Cliente[]> => {
+const clienteService = {
+  crearCliente: async (cliente: Omit<Cliente, 'id'>): Promise<Cliente> => { 
     try {
-      const response = await fetch("http://localhost:8080/clientes/list");
-      if (!response.ok) throw new Error("Error en la API");
-  
-      const data = await response.json();
-      return Array.isArray(data) ? data : []; 
+        const response = await api.post("", cliente);
+        return response.data;
     } catch (error) {
-      console.error("Error al obtener clientes:", error);
-      return [];
+        console.error("Error al crear cliente:", error);
+        throw error; 
     }
-  };
-  
+},
+
+    obtenerClientes: async (): Promise<Cliente[]> => {
+        try {
+            const response = await api.get("clientes/list");
+            return response.data;
+        } catch (error) {
+            console.error("Error al obtener clientes:", error);
+            return []; 
+        }
+    },
+
+    actualizarCliente: async (id: string, cliente: Partial<Omit<Cliente, 'id'>>): Promise<Cliente> => { 
+        try {
+            const response = await api.put(`/actualizar/${id}`, cliente);
+            return response.data;
+        } catch (error) {
+            console.error("Error al actualizar cliente:", error);
+            throw error; 
+        }
+    },
+
+    eliminarCliente: async (id: string): Promise<void> => { 
+        try {
+            await api.delete(`/delete/${id}`);
+        } catch (error) {
+            console.error("Error al eliminar cliente:", error);
+            throw error; 
+        }
+    },
+
+    obtenerCliente: async (id: string): Promise<Cliente | null> => {
+        try {
+            const response = await api.get(`/obetenerclientexud/${id}`);
+            return response.data;
+        } catch (error) {
+            console.error("Error al obtener cliente:", error);
+            return null; 
+        }
+    },
+};
+
+export default clienteService;
